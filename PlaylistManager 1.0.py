@@ -2,9 +2,10 @@ import webbrowser
 import json
 import os
 
-#########################################################
-# Ville Lindberg "Ohjelmoinnin perusteet"- harjoitustyö #
-#########################################################
+#############################################
+# Accountless Youtube playlist manager 1.0  #	    
+# Author: dogedox 			    #
+#############################################
 
 #metodeita millä playlist dataa käsitellään, tiedoston muokkausta, lukemista yms.
 def viewAllPlaylists(playlistdata): #metodi joka vastaa listojen tarkatelusta: Valmis
