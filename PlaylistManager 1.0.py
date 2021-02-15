@@ -4,7 +4,7 @@ import os
 
 #############################################
 # Accountless Youtube playlist manager 1.0  #	    
-# Author: dogedox 			    #
+# Author: dogedox 			                #
 #############################################
 
 #metodeita millä playlist dataa käsitellään, tiedoston muokkausta, lukemista yms.
@@ -19,9 +19,12 @@ def viewAllPlaylists(playlistdata): #metodi joka vastaa listojen tarkatelusta: V
 def deletePlaylist(playlist,playlistdata):
     print("")
     try:
-        playlistdata.pop(playlist)
-        writeToJson(playlistdata)
-        print("Soittolista poistettu")
+        if input("Syötä kyllä jos olet varma, että haluat poistaa listan?").lower()=="kyllä":
+            playlistdata.pop(playlist)
+            writeToJson(playlistdata)
+            print("Soittolista poistettu")
+        else:
+            print("Listaa ei poistettu")
     except:
         print("Soittolistaa ei ole!")
 
@@ -41,7 +44,7 @@ def deleteSong(song,playlist,playlistdata): #Poistaa nimen perusteellaa listalta
     print("")
     for indexofsongs,songs in enumerate(playlistdata[playlist]):
         for keys in playlistdata[playlist][indexofsongs]:
-            if(keys==song):
+            if(keys.lower()==song.lower()):
                 print(str(keys)+" Poistettu!")
                 playlistdata[playlist].pop(indexofsongs)
     writeToJson(data)
@@ -73,6 +76,7 @@ def urlConstructor(playlist,playlistdata): #Raketaa listojen pohjalta urlin joka
 
 def urlOpener(url): #Valmis
     try:
+        print(url)
         webbrowser.open(url,new=2)
     except:
         print("Soittolistaa ei voitu avata!")
